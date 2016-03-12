@@ -54,12 +54,7 @@ RUN curl -s http://d3kbcqa49mib13.cloudfront.net/spark-1.6.0-bin-hadoop2.6.tgz |
 RUN cd /usr/local && ln -s spark-1.6.0-bin-hadoop2.6 spark
 
 # install cassandra
-ENV CASSANDRA_VERSION 2.1.8
-RUN apt-key adv --keyserver ha.pool.sks-keyservers.net --recv-keys 514A2AD631A57A16DD0047EC749D6EEC0353B12C
-RUN echo 'deb http://www.apache.org/dist/cassandra/debian 21x main' >> /etc/apt/sources.list.d/cassandra.list
-RUN apt-get update \
-	&& apt-get install -y cassandra="$CASSANDRA_VERSION" \
-	&& rm -rf /var/lib/apt/lists/*
+
 
 #copy some script to run spark */
 COPY scripts/start-master.sh /start-master.sh
